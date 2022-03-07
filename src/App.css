@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  margin: 10rem auto;
+}
+
+label,
+input {
+  font-size: 1.5rem;
+  margin: 1rem 5rem;
+}
+
+button {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-right: 2rem;
+}
+
+.display {
+  font-size: 1.3rem;
+  text-align: center;
+}
+table {
+  margin: 2rem auto;
+  border: 1px solid black;
+  width: 50rem;
+}

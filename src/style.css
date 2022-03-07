@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  font-family: "Fredoka", sans-serif;
+}
+
+.header {
+  background: rgb(167, 198, 212);
+  text-align: center;
+  font-size: 2.7rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+
+.navigation nav {
+  background: rgb(0, 0, 0);
+  color: aliceblue;
+  width: 15%;
+  height: 100vh;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  float: left;
+}
+
+.navigation nav a {
+  display: block;
+  text-decoration: none;
+  color: aliceblue;
+  margin: 1rem 0;
+}
+.navigation nav a.active {
+  color: rgb(23, 158, 221);
+}
+.icon {
+  margin-right: 1rem;
+}
+
+.create-user-card {
+  margin: 2rem 20%;
+}
+.create-user-card h1 {
+  margin-left: 1rem;
+}
+
+.form-field {
+  background: #f2f2f2;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+form > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-field input {
+  border: none;
+  font-size: 1.3rem;
+  margin-right: 5rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+.form-field input:focus {
+  outline: none;
+}
+
+.form-field label {
+  font-size: 1.3rem;
+}
+.form-field div label {
+  font-size: 1.1rem;
+}
+
+textarea {
+  width: 24rem;
+  height: 5rem;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-family: "Fredoka", sans-serif;
+  border: none;
+  border-radius: 10px;
+  margin-right: 5rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 25rem;
+}
+
+.btn {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.btn button {
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 2rem;
+  background: rgb(23, 158, 221);
+  font-family: "Fredoka", sans-serif;
+}
+.btn button:hover {
+  background-color: #cccbcb;
+}
+
+.user-data-container {
+  margin: 2rem 20%;
+  font-size: 1.2rem;
+}
+table {
+  min-width: 100%;
+  text-align: center;
+}
+
+table th {
+  padding: 0.5rem 0;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  font-size: 1.4rem;
+}
+table td {
+  padding: 0.5rem 0;
+}
+
+.edit-icon {
+  color: rgb(92, 195, 67);
+  cursor: pointer;
+}
+
+.del-icon {
+  color: rgb(251, 61, 61);
+  cursor: pointer;
+}
