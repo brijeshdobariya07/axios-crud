@@ -33,7 +33,8 @@ function CreateUser() {
         break;
 
       case "age":
-        setUserData((item) => ({ ...item, age: value }));
+        if (value >= 10 && value <= 100)
+          setUserData((item) => ({ ...item, age: value }));
         break;
 
       case "gender":
