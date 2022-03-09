@@ -52,13 +52,27 @@ function UserData() {
             </thead>
             <tbody>
               {userData.map((user) => {
+                const { id, name, age, gender, hobbies, address } = user || "";
+
                 return (
-                  <tr key={user.id}>
-                    <td>{user.name}</td>
-                    <td>{user.age}</td>
-                    <td>{user.gender}</td>
-                    <td>{user.hobbies.map((hobby) => `${hobby}, `)}</td>
-                    <td>{user.address}</td>
+                  <tr key={id}>
+                    <td>{name}</td>
+                    <td>{age}</td>
+                    <td>{gender}</td>
+
+                    <td>
+                      {hobbies.map((item, i) => {
+                        const lastIndex = hobbies.length - 1;
+                        if (i === lastIndex) {
+                          return `${item}`;
+                        } else {
+                          return `${item}, `;
+                        }
+                      })}
+                    </td>
+
+                    <td>{address}</td>
+
                     <td>
                       <FiEdit
                         className="edit-icon"
@@ -68,7 +82,7 @@ function UserData() {
                     <td>
                       <FiTrash
                         className="del-icon"
-                        onClick={() => deleteUser(user.id)}
+                        onClick={() => deleteUser(id)}
                       />
                     </td>
                   </tr>

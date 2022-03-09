@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import UserData from "./UserData";
+// import UserData from "./UserData";
 
 function CreateUser() {
   const navigate = useNavigate();
@@ -42,7 +42,11 @@ function CreateUser() {
 
       case "hobbies":
         let hobby = new Set([...userData.hobbies]);
-        hobby.add(value);
+        if (hobby.has(value)) {
+          hobby.delete(value);
+        } else {
+          hobby.add(value);
+        }
         setUserData((item) => ({ ...item, hobbies: [...hobby] }));
         break;
 
