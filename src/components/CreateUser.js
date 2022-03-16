@@ -13,6 +13,9 @@ function CreateUser() {
     address: "",
   });
 
+  const [validName, setValidName] = useState(true);
+  const [valid, setValid] = useState(false);
+
   const [isEdit, setIsEdit] = useState(false);
 
   const { state } = useLocation();
@@ -29,7 +32,12 @@ function CreateUser() {
     const { name, value } = e.target;
     switch (name) {
       case "name":
-        setUserData((item) => ({ ...item, name: value }));
+        if (value.length <= 30) {
+          setUserData((item) => ({ ...item, name: value }));
+          setValidName(true);
+        } else {
+          setValidName(false);
+        }
         break;
 
       case "age":
@@ -61,8 +69,10 @@ function CreateUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, age, gender, hobbies, address } = userData;
+    const isValid = validate();
 
-    if (name && age && gender && hobbies && address && isEdit === false) {
+    if (isValid && isEdit === false) {
+      setValid(false);
       axios
         .post("https://62207dfdce99a7de195b3ec5.mockapi.io/userdata", userData)
         .then((res) => navigate("/"))
@@ -76,11 +86,20 @@ function CreateUser() {
         .then((res) => navigate("/"))
         .catch((err) => alert("error occured"));
     } else {
+      setValid(true);
       alert("Please Fill all details");
     }
   };
 
   const { name, age, gender, hobbies, address } = userData;
+
+  const validate = () => {
+    if (user && age && gender && hobbies && address) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <div className="create-user-card">
@@ -91,13 +110,21 @@ function CreateUser() {
           </div>
           <div className="form-field">
             <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              placeholder="Full Name"
-              name="name"
-              onChange={(e) => handleData(e)}
-              value={name}
-            />
+            <div>
+              <input
+                type="text"
+                placeholder="Full Name"
+                name="name"
+                onChange={(e) => handleData(e)}
+                value={name}
+              />
+              {!validName ? (
+                <div className="valid">*Name must be 30 characters only</div>
+              ) : null}
+              {valid ? (
+                <div className="valid">*This field is required</div>
+              ) : null}
+            </div>
           </div>
           <div className="form-field">
             <label htmlFor="age">Age</label>
@@ -110,25 +137,30 @@ function CreateUser() {
           </div>
           <div className="form-field">
             <label htmlFor="Gender">Gender</label>
-            <div className="form__gender">
-              <input
-                type="radio"
-                id="male"
-                name="gender"
-                onChange={(e) => handleData(e)}
-                value="Male"
-                checked={gender === "Male"}
-              />
-              <label htmlFor="male">Male</label>
-              <input
-                type="radio"
-                id="female"
-                name="gender"
-                onChange={(e) => handleData(e)}
-                value="Female"
-                checked={gender === "Female"}
-              />
-              <label htmlFor="female">Female</label>
+            <div>
+              <div className="form__gender">
+                <input
+                  type="radio"
+                  id="male"
+                  name="gender"
+                  onChange={(e) => handleData(e)}
+                  value="Male"
+                  checked={gender === "Male"}
+                />
+                <label htmlFor="male">Male</label>
+                <input
+                  type="radio"
+                  id="female"
+                  name="gender"
+                  onChange={(e) => handleData(e)}
+                  value="Female"
+                  checked={gender === "Female"}
+                />
+                <label htmlFor="female">Female</label>
+              </div>
+              {valid ? (
+                <div className="valid">*This field is required</div>
+              ) : null}
             </div>
           </div>
 
@@ -136,46 +168,56 @@ function CreateUser() {
             <label htmlFor="hobby">Hobbies</label>
             <div className="form__hobby">
               <div>
-                <input
-                  type="checkbox"
-                  value="Playing"
-                  onChange={(e) => handleData(e)}
-                  name="hobbies"
-                  checked={hobbies.includes("Playing") === true}
-                />
-                <label htmlFor="playing">Playing</label>
+                <div>
+                  <input
+                    type="checkbox"
+                    value="Playing"
+                    onChange={(e) => handleData(e)}
+                    name="hobbies"
+                    checked={hobbies.includes("Playing") === true}
+                  />
+                  <label htmlFor="playing">Playing</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    value="Singing"
+                    onChange={(e) => handleData(e)}
+                    name="hobbies"
+                    checked={hobbies.includes("Singing") === true}
+                  />
+                  <label htmlFor="singing">Singing</label>
+                </div>
+                <div>
+                  <input
+                    type="checkbox"
+                    value="Reading"
+                    onChange={(e) => handleData(e)}
+                    name="hobbies"
+                    checked={hobbies.includes("Reading") === true}
+                  />
+                  <label htmlFor="reading">Reading</label>
+                </div>
               </div>
-              <div>
-                <input
-                  type="checkbox"
-                  value="Singing"
-                  onChange={(e) => handleData(e)}
-                  name="hobbies"
-                  checked={hobbies.includes("Singing") === true}
-                />
-                <label htmlFor="singing">Singing</label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  value="Reading"
-                  onChange={(e) => handleData(e)}
-                  name="hobbies"
-                  checked={hobbies.includes("Reading") === true}
-                />
-                <label htmlFor="reading">Reading</label>
-              </div>
+              {valid ? (
+                <div className="valid">*This field is required</div>
+              ) : null}
             </div>
           </div>
           <div className="form-field">
             <label htmlFor="address">Address</label>
-            <textarea
-              type="text"
-              placeholder="Address"
-              name="address"
-              onChange={(e) => handleData(e)}
-              value={address}
-            ></textarea>
+            <div>
+              <textarea
+                type="text"
+                placeholder="Address"
+                name="address"
+                onChange={(e) => handleData(e)}
+                value={address}
+              ></textarea>
+              {valid ? (
+                <div className="valid">*This field is required</div>
+              ) : null}
+            </div>
           </div>
           <div className="btn">
             <button type="submit" onClick={(e) => handleSubmit(e)}>

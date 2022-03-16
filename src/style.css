@@ -80,11 +80,13 @@ body {
   padding: 1rem;
   border-radius: 10px;
   font-size: 1.5rem;
+  position: relative;
 }
 form > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 100px;
 }
 .form-field input {
   border: none;
@@ -100,11 +102,14 @@ form > div {
 
 .form-field label {
   font-size: 1.3rem;
+  margin-left: 30px;
 }
 .form-field div label {
   font-size: 1.1rem;
 }
-
+.form__gender {
+  margin-right: 50px;
+}
 .form__gender > input {
   margin-right: 10px;
 }
@@ -113,10 +118,17 @@ form > div {
 }
 
 .form__hobby input {
-  margin-right: 20px;
+  margin-right: 0px;
 }
 .form__hobby label {
   margin-right: 100px;
+}
+
+.valid {
+  font-size: 0.5em;
+  color: red;
+  margin-left: 25px;
+  margin-top: 5px;
 }
 
 textarea {
@@ -145,7 +157,7 @@ input[type="number"] {
 .btn button {
   font-size: 1.5rem;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 0.5rem 2rem;
   background: rgb(23, 158, 221);
   font-family: "Fredoka", sans-serif;
