@@ -83,8 +83,8 @@ function CreateUser() {
   const { name, age, gender, hobbies, address } = userData;
 
   return (
-    <div>
-      <div className="create-user-card">
+    <div className="create-user-card">
+      <div>
         <form action="/">
           <div>
             <h1>{stateEdit ? "Update" : "Add"} User</h1>

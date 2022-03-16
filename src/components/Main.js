@@ -9,11 +9,13 @@ function Main() {
   return (
     <div className="main">
       <Header />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<UserData />} />
-        <Route path="/add" element={<CreateUser />} />
-      </Routes>
+      <div className="main__overflow">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<UserData />} />
+          <Route path="/add" element={<CreateUser />} />
+        </Routes>
+      </div>
     </div>
   );
 }

@@ -11,7 +11,12 @@ body {
   height: 100vh;
   overflow: auto;
   font-family: "Fredoka", sans-serif;
-  /* overflow: hidden; */
+  overflow: hidden;
+}
+
+.main__overflow {
+  margin: 0;
+  display: flex;
 }
 
 .header {
@@ -21,15 +26,35 @@ body {
   padding: 0.5rem 0;
   font-weight: bold;
 }
+.navigation {
+  flex: 0.15;
+}
+.user-data-container {
+  flex: 1;
+  overflow: auto;
+  height: 100vh;
+  margin: 30px 100px;
+  font-size: 1.2rem;
+  padding-bottom: 150px;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  margin: 10px;
+}
+.create-user-card {
+  flex: 1;
+  overflow: auto;
+  margin: 30px 100px;
+  height: 100vh;
+  padding-bottom: 150px;
+}
 
-.navigation nav {
+.navigation {
   background: rgb(0, 0, 0);
   color: aliceblue;
-  width: 15%;
   height: 100vh;
   padding: 1rem 2rem;
   font-size: 1.8rem;
-  float: left;
 }
 
 .navigation nav a {
@@ -45,9 +70,6 @@ body {
   margin-right: 1rem;
 }
 
-.create-user-card {
-  margin: 2rem 20%;
-}
 .create-user-card h1 {
   margin-left: 1rem;
 }
@@ -132,12 +154,8 @@ input[type="number"] {
   background-color: #cccbcb;
 }
 
-.user-data-container {
-  margin: 2rem 20%;
-  font-size: 1.2rem;
-}
 table {
-  width: 120%;
+  width: 100%;
   text-align: center;
   border: 2px solid #cecccc;
   padding: 20px;
