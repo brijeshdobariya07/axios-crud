@@ -18,13 +18,14 @@ function UserData() {
     getUserData();
   }, []);
 
-  const deleteUser = (id) => {
+  const deleteUser = (id, index) => {
     axios
       .delete(`https://62207dfdce99a7de195b3ec5.mockapi.io/userdata/${id}`)
       .then((res) => {
-        const findId = userData.findIndex((user) => user.id === res.data.id);
+        // const findId = userData.findIndex((user) => user.id === res.data.id);
+        // Alwayts Use Index of map object for array operations
         let deleteData = [...userData];
-        deleteData.splice(findId, 1);
+        deleteData.splice(index, 1);
         setUserData(deleteData);
       })
       .catch((err) => alert("Failed To Delete User"));
@@ -34,9 +35,13 @@ function UserData() {
     navigate("/add", { state: { user, edit: true } });
   };
 
+  const handleAddBtn = () => {
+    navigate("/add");
+  };
+
   return (
-    <div>
-      <div className="user-data-container">
+    <div className="user-data-container">
+      <div>
         <div className="data-table">
           <table>
             <thead>
@@ -51,7 +56,7 @@ function UserData() {
               </tr>
             </thead>
             <tbody>
-              {userData.map((user) => {
+              {userData.map((user, index) => {
                 const { id, name, age, gender, hobbies, address } = user || "";
 
                 return (
@@ -82,7 +87,7 @@ function UserData() {
                     <td>
                       <FiTrash
                         className="del-icon"
-                        onClick={() => deleteUser(id)}
+                        onClick={() => deleteUser(id, index)}
                       />
                     </td>
                   </tr>
@@ -90,6 +95,9 @@ function UserData() {
               })}
             </tbody>
           </table>
+        </div>
+        <div className="add-btn">
+          <div onClick={handleAddBtn}>Add</div>
         </div>
       </div>
     </div>

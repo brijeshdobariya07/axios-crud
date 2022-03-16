@@ -11,6 +11,7 @@ body {
   height: 100vh;
   overflow: auto;
   font-family: "Fredoka", sans-serif;
+  /* overflow: hidden; */
 }
 
 .header {
@@ -82,6 +83,20 @@ form > div {
   font-size: 1.1rem;
 }
 
+.form__gender > input {
+  margin-right: 10px;
+}
+.form__gender > label {
+  margin-right: 50px;
+}
+
+.form__hobby input {
+  margin-right: 20px;
+}
+.form__hobby label {
+  margin-right: 100px;
+}
+
 textarea {
   width: 24rem;
   height: 5rem;
@@ -122,8 +137,11 @@ input[type="number"] {
   font-size: 1.2rem;
 }
 table {
-  min-width: 100%;
+  width: 120%;
   text-align: center;
+  border: 2px solid #cecccc;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 table th {
@@ -131,9 +149,11 @@ table th {
   background-color: #f2f2f2;
   border-radius: 8px;
   font-size: 1.4rem;
+  width: 10%;
 }
 table td {
   padding: 0.5rem 0;
+  overflow-wrap: anywhere;
 }
 
 .edit-icon {
@@ -144,4 +164,21 @@ table td {
 .del-icon {
   color: rgb(251, 61, 61);
   cursor: pointer;
+}
+
+.add-btn {
+  margin-top: 30px;
+}
+
+.add-btn > div {
+  width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #f2f2f2;
+  text-align: center;
+  cursor: pointer;
+}
+.add-btn > div:hover {
+  background-color: rgb(167, 198, 212);
 }

@@ -5,8 +5,8 @@ import { FiEdit } from "react-icons/fi";
 
 const Navbar = () => {
   return (
-    <div>
-      <div className="navigation">
+    <div className="navigation">
+      <div>
         <nav>
           <NavLink to="/">
             <FiHome className="icon" />

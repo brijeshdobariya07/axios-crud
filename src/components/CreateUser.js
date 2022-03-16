@@ -80,14 +80,14 @@ function CreateUser() {
     }
   };
 
-  let { name, age, gender, hobbies, address } = userData;
+  const { name, age, gender, hobbies, address } = userData;
 
   return (
     <div>
       <div className="create-user-card">
         <form action="/">
           <div>
-            <h1>Add User</h1>
+            <h1>{stateEdit ? "Update" : "Add"} User</h1>
           </div>
           <div className="form-field">
             <label htmlFor="name">Name</label>
@@ -110,8 +110,7 @@ function CreateUser() {
           </div>
           <div className="form-field">
             <label htmlFor="Gender">Gender</label>
-            <div>
-              <label htmlFor="male">Male</label>
+            <div className="form__gender">
               <input
                 type="radio"
                 id="male"
@@ -120,7 +119,7 @@ function CreateUser() {
                 value="Male"
                 checked={gender === "Male"}
               />
-              <label htmlFor="female">Female</label>
+              <label htmlFor="male">Male</label>
               <input
                 type="radio"
                 id="female"
@@ -129,13 +128,14 @@ function CreateUser() {
                 value="Female"
                 checked={gender === "Female"}
               />
+              <label htmlFor="female">Female</label>
             </div>
           </div>
+
           <div className="form-field">
             <label htmlFor="hobby">Hobbies</label>
-            <div>
+            <div className="form__hobby">
               <div>
-                <label htmlFor="playing">Playing</label>
                 <input
                   type="checkbox"
                   value="Playing"
@@ -143,9 +143,9 @@ function CreateUser() {
                   name="hobbies"
                   checked={hobbies.includes("Playing") === true}
                 />
+                <label htmlFor="playing">Playing</label>
               </div>
               <div>
-                <label htmlFor="singing">Singing</label>
                 <input
                   type="checkbox"
                   value="Singing"
@@ -153,9 +153,9 @@ function CreateUser() {
                   name="hobbies"
                   checked={hobbies.includes("Singing") === true}
                 />
+                <label htmlFor="singing">Singing</label>
               </div>
               <div>
-                <label htmlFor="reading">Reading</label>
                 <input
                   type="checkbox"
                   value="Reading"
@@ -163,6 +163,7 @@ function CreateUser() {
                   name="hobbies"
                   checked={hobbies.includes("Reading") === true}
                 />
+                <label htmlFor="reading">Reading</label>
               </div>
             </div>
           </div>
